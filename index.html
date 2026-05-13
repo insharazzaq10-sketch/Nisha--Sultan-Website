@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nisa Sultan</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>Nisa Sultan</h2>
+                <span>Turkish Cuisine</span>
+            </div>
+            <div class="delivery">
+                <small>Delivery</small>
+                <p>LAKE CITY<br>RAIWIND ROAD LAHORE</p>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#menu-preview">MENU</a></li>
+                <li><a href="#about-section">ABOUT US</a></li>
+                <li><a href="#gallery-section">LOCATIONS</a></li>
+                <li><a href="#instagram-section">CONTACT US</a></li>
+                <li><a href="#" id="openBookModal">BOOK A TABLE</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <div class="user-icon">👤</div>
+                <!-- CART ICON IN NAVBAR -->
+                <div class="cart-icon-wrap" id="cartIconWrap" onclick="toggleCart()">
+                    🛒
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+                <a href="#" class="order-btn">ORDER NOW</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🛒 Your Order</h3>
+            <button class="cart-close" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty">Your cart is empty 🍽️</p>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">PKR 0</span>
+            </div>
+            <button class="cart-checkout-btn" onclick="checkoutCart()">PLACE ORDER</button>
+            <button class="cart-clear-btn" onclick="clearCart()">Clear Cart</button>
+        </div>
+    </div>
+
+    <!-- BOOK A TABLE MODAL -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Book a Table</h2>
+                <button class="modal-close" id="closeBookModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="+92 300 0000000" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Guests</label>
+                        <select>
+                            <option>1 Person</option>
+                            <option>2 People</option>
+                            <option selected>4 People</option>
+                            <option>6 People</option>
+                            <option>8+ People</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select>
+                            <option>Lake City</option>
+                            <option>Raiwind Road</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-confirm-booking" id="confirmBooking">CONFIRM RESERVATION</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <video autoplay muted loop id="bg-video">
+            <source src="1100-143052485_medium.mp4" type="video/mp4">
+        </video>
+        <canvas id="star-canvas"></canvas>
+        <div class="hero-title">
+            <h1>Nisa Sultan</h1>
+        </div>
+    </section>
+
+    <!-- SCROLLING BAR -->
+    <div class="scroll-container ">
+        <div class="scroll-content ">
+            <span>DINING EXPERIENCE</span>
+            <span>PREMIUM INGREDIENTS</span>
+            <span>INNOVATIVE TURKISH FLAVORS</span>
+            <span>DINING EXPERIENCE</span>
+            <span>PREMIUM INGREDIENTS</span>
+            <span>INNOVATIVE TURKISH FLAVORS</span>
+        </div>
+    </div>
+
+    <!-- ABOUT NISA SULTAN -->
+    <section class="about-section" id="about-section">
+        <div class="about-pattern"></div>
+        <div class="about-container">
+            <div class="about-media">
+                <div class="about-arch">
+                    <video autoplay muted loop playsinline id="about-video">
+                        <source src="11901450_1080_1920_100fps.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="about-content">
+                <p class="about-label">THE SULTAN'S HERITAGE</p>
+                <h2 class="about-heading">About Nisa Sultan</h2>
+                <div class="about-divider"></div>
+                <p class="about-text">
+                    It is our endeavor to provide you <span class="about-highlight">authentic Turkish food</span>
+                    through our cuisine connoisseurs with a unique and memorable dining experience.
+                </p>
+                <p class="about-text" style="margin-top: 16px;">
+                    Born from the heart of Ottoman tradition, Nisa Sultan brings the rich culinary legacy of Istanbul
+                    straight to the streets of Lahore — where every dish tells a story of heritage, craft, and passion.
+                </p>
+                <div class="about-signature">
+                    <p class="about-ceo-name">Nadira Sohail Qureshi</p>
+                    <p class="about-ceo-title">CEO — NISA SULTAN GLOBAL</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY NISA SULTAN -->
+    <section class="features-strip">
+        <div class="section-heading">
+            <h2>Why Nisa Sultan?</h2>
+            <div class="gold-divider"></div>
+            <p>In Lahore, experience authentic Turkish flavors — fresh ingredients, a royal ambiance, and an unforgettable taste.</p>
+        </div>
+        <div class="features">
+            <div class="feat-card">
+                <div class="feat-icon">🥩</div>
+                <h3>Premium Meats</h3>
+                <p>Halal certified, slow-marinated cuts grilled to perfection daily</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🍽️</div>
+                <h3>Royal Dining</h3>
+                <p>Ottoman-inspired interiors for an unforgettable dining experience</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🚚</div>
+                <h3>Fast Delivery</h3>
+                <p>Hot meals delivered to Lake City & Raiwind Road, Lahore</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">👨‍🍳</div>
+                <h3>Authentic Recipes</h3>
+                <p>Straight from the streets of Istanbul — no compromise on taste</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery-section">
+        <h2>Our Ambiance</h2>
+        <div class="gold-divider"></div>
+        <p>Experience the beauty of Turkish cuisine in a royal setting</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="interior.jfif" alt="Interior">
+                <div class="gallery-overlay"><p>Main Dining Hall</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="MANTI.jfif" alt="Food">
+                <div class="gallery-overlay"><p>Turkish Manti</p></div>
+            </div>
+            <div class="gallery-item">
+                <video autoplay muted loop playsinline>
+                    <source src="15124626_2560_1440_30fps.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-overlay"><p>Private Seating</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="KUNAFA.jfif" alt="Dessert">
+                <div class="gallery-overlay"><p>Turkish Kunafa</p></div>
+            </div>
+            <div class="gallery-item">
+                <video autoplay muted loop playsinline>
+                    <source src="211185.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-overlay"><p>Live Grill Station</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="pexels-begum-13920943.jpg" alt="Drinks">
+                <div class="gallery-overlay"><p>Turkish Tea & Ayran</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU PREVIEW — ADD TO CART -->
+    <section class="menu-preview" id="menu-preview">
+        <h2>Popular Dishes</h2>
+        <div class="gold-divider"></div>
+        <p>Our most-loved Turkish specialties</p>
+        <div class="menu-grid">
+
+            <div class="menu-card">
+                <img src="Adana kabab.jfif" alt="Adana Kebab">
+                <div class="menu-info">
+                    <h3>Adana Kebab</h3>
+                    <p>Spiced minced lamb on skewer, served with rice and salad</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-price">PKR 1,200</span>
+                        <button class="add-to-cart-btn" onclick="addToCart('Adana Kebab', 1200, this)">
+                            + Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <video autoplay muted loop playsinline>
+                    <source src="227128_medium (1).mp4" type="video/mp4">
+                </video>
+                <div class="menu-info">
+                    <h3>İskender Kebab</h3>
+                    <p>Thin sliced lamb over bread with tomato sauce & butter</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-price">PKR 1,450</span>
+                        <button class="add-to-cart-btn" onclick="addToCart('İskender Kebab', 1450, this)">
+                            + Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="Pide.jfif" alt="Turkish Pide">
+                <div class="menu-info">
+                    <h3>Turkish Pide</h3>
+                    <p>Boat-shaped flatbread with minced meat and cheese</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-price">PKR 950</span>
+                        <button class="add-to-cart-btn" onclick="addToCart('Turkish Pide', 950, this)">
+                            + Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FULL MENU SECTION -->
+    <section class="full-menu-section">
+        <div class="full-menu-header">
+            <p class="menu-label-top">OUR SELECTION</p>
+            <h2>Discover Our Authentic Turkish Menu</h2>
+            <div class="gold-divider"></div>
+        </div>
+
+        <div class="menu-category-row">
+            <div class="menu-cat-content left">
+                <span class="menu-cat-number">01</span>
+                <h3>Turkish Mezze / Appetizers</h3>
+                <p>A vibrant collection of small cold and hot plates bursting with Anatolian spices and Mediterranean vegetables.</p>
+                <button class="menu-explore-btn" onclick="toggleMenu('mezze')">EXPLORE ↓</button>
+                <div class="menu-items-list" id="mezze">
+                    <div class="menu-item-row"><span>Hummus & Pita</span><span>PKR 450</span></div>
+                    <div class="menu-item-row"><span>Sigara Böreği (Cheese Rolls)</span><span>PKR 550</span></div>
+                    <div class="menu-item-row"><span>Muhammara (Red Pepper Dip)</span><span>PKR 480</span></div>
+                    <div class="menu-item-row"><span>Ezme Salad</span><span>PKR 400</span></div>
+                    <div class="menu-item-row"><span>Cacık (Turkish Tzatziki)</span><span>PKR 380</span></div>
+                </div>
+            </div>
+            <div class="menu-cat-image right">
+                <img src="MANTI.jfif" alt="Turkish Mezze">
+            </div>
+        </div>
+
+        <div class="menu-category-row reverse">
+            <div class="menu-cat-image left">
+                <img src="Adana kabab.jfif" alt="Kebabs">
+            </div>
+            <div class="menu-cat-content right">
+                <span class="menu-cat-number">02</span>
+                <h3>Kebabs & Grills</h3>
+                <p>Charcoal-fired masterpieces — from spiced Adana to tender şiş — each skewer crafted with authentic Turkish spice blends.</p>
+                <button class="menu-explore-btn" onclick="toggleMenu('kebabs')">EXPLORE ↓</button>
+                <div class="menu-items-list" id="kebabs">
+                    <div class="menu-item-row"><span>Adana Kebab</span><span>PKR 1,200</span></div>
+                    <div class="menu-item-row"><span>İskender Kebab</span><span>PKR 1,450</span></div>
+                    <div class="menu-item-row"><span>Şiş Tawuk (Chicken Shish)</span><span>PKR 1,100</span></div>
+                    <div class="menu-item-row"><span>Beyti Kebab</span><span>PKR 1,300</span></div>
+                    <div class="menu-item-row"><span>Kuzu Şiş (Lamb Shish)</span><span>PKR 1,600</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category-row">
+            <div class="menu-cat-content left">
+                <span class="menu-cat-number">03</span>
+                <h3>Pides & Flatbreads</h3>
+                <p>Stone-baked boat-shaped breads layered with premium toppings — a staple of the Anatolian table since Ottoman times.</p>
+                <button class="menu-explore-btn" onclick="toggleMenu('pides')">EXPLORE ↓</button>
+                <div class="menu-items-list" id="pides">
+                    <div class="menu-item-row"><span>Kıymalı Pide (Minced Meat)</span><span>PKR 950</span></div>
+                    <div class="menu-item-row"><span>Kaşarlı Pide (Cheese)</span><span>PKR 800</span></div>
+                    <div class="menu-item-row"><span>Sucuklu Pide (Spiced Sausage)</span><span>PKR 1,050</span></div>
+                    <div class="menu-item-row"><span>Lahmacun (Turkish Pizza)</span><span>PKR 600</span></div>
+                </div>
+            </div>
+            <div class="menu-cat-image right">
+                <video autoplay muted loop playsinline>
+                    <source src="Video Clip.mp4.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="menu-category-row reverse">
+            <div class="menu-cat-image left">
+                <video autoplay muted loop playsinline>
+                    <source src="· Free Stock Video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="menu-cat-content right">
+                <span class="menu-cat-number">04</span>
+                <h3>Turkish Desserts</h3>
+                <p>Indulge in honey-drenched pastries, rose-water kunafa, and the finest baklava — a sweet end befitting royalty.</p>
+                <button class="menu-explore-btn" onclick="toggleMenu('desserts')">EXPLORE ↓</button>
+                <div class="menu-items-list" id="desserts">
+                    <div class="menu-item-row"><span>Künefe (Kunafa)</span><span>PKR 700</span></div>
+                    <div class="menu-item-row"><span>Fıstıklı Baklava</span><span>PKR 650</span></div>
+                    <div class="menu-item-row"><span>Sütlaç (Rice Pudding)</span><span>PKR 450</span></div>
+                    <div class="menu-item-row"><span>Lokma (Fried Dough Balls)</span><span>PKR 400</span></div>
+                    <div class="menu-item-row"><span>Kazandibi</span><span>PKR 500</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category-row">
+            <div class="menu-cat-content left">
+                <span class="menu-cat-number">05</span>
+                <h3>Beverages & Turkish Tea</h3>
+                <p>From tulip-glass çay to frothy Türk kahvesi — sip the traditions of Istanbul in every glass.</p>
+                <button class="menu-explore-btn" onclick="toggleMenu('drinks')">EXPLORE ↓</button>
+                <div class="menu-items-list" id="drinks">
+                    <div class="menu-item-row"><span>Türk Çayı (Turkish Tea)</span><span>PKR 150</span></div>
+                    <div class="menu-item-row"><span>Türk Kahvesi (Turkish Coffee)</span><span>PKR 350</span></div>
+                    <div class="menu-item-row"><span>Ayran (Salted Yogurt Drink)</span><span>PKR 200</span></div>
+                    <div class="menu-item-row"><span>Şalgam (Turnip Juice)</span><span>PKR 250</span></div>
+                    <div class="menu-item-row"><span>Limonata</span><span>PKR 280</span></div>
+                </div>
+            </div>
+            <div class="menu-cat-image right">
+                <video autoplay muted loop playsinline>
+                    <source src="15603351_1920_1080_25fps (1).mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- INSTAGRAM SECTION -->
+    <section class="instagram-section" id="instagram-section">
+        <div class="insta-header">
+            <h2>Follow Us for a Taste of Tradition &amp; Innovation</h2>
+            <p>Experience the vibrant soul of Anatolia beyond the plate. Follow our journey for<br>exclusive culinary insights and Turkish hospitality.</p>
+            <a href="https://instagram.com/nisasultanturkish" target="_blank" class="insta-follow-btn">FOLLOW @NISASULTANTURKISH</a>
+        </div>
+        <div class="insta-carousel-wrapper">
+            <div class="insta-carousel-track">
+                <div class="insta-img-item"><img src="Adana kabab.jfif" alt="Adana Kebab"><div class="insta-overlay">❤️ 1.2k</div></div>
+                <div class="insta-img-item"><img src="Pide.jfif" alt="Pide"><div class="insta-overlay">❤️ 980</div></div>
+                <div class="insta-img-item"><img src="MANTI.jfif" alt="Manti"><div class="insta-overlay">❤️ 2.1k</div></div>
+                <div class="insta-img-item"><img src="KUNAFA.jfif" alt="Kunafa"><div class="insta-overlay">❤️ 1.7k</div></div>
+                <div class="insta-img-item"><img src="pexels-begum-13920943.jpg" alt="Drinks"><div class="insta-overlay">❤️ 850</div></div>
+                <div class="insta-img-item"><img src="interior.jfif" alt="Interior"><div class="insta-overlay">❤️ 3.4k</div></div>
+                <div class="insta-img-item"><img src="Adana kabab.jfif" alt="Adana Kebab"><div class="insta-overlay">❤️ 1.2k</div></div>
+                <div class="insta-img-item"><img src="Pide.jfif" alt="Pide"><div class="insta-overlay">❤️ 980</div></div>
+                <div class="insta-img-item"><img src="MANTI.jfif" alt="Manti"><div class="insta-overlay">❤️ 2.1k</div></div>
+                <div class="insta-img-item"><img src="KUNAFA.jfif" alt="Kunafa"><div class="insta-overlay">❤️ 1.7k</div></div>
+                <div class="insta-img-item"><img src="pexels-begum-13920943.jpg" alt="Drinks"><div class="insta-overlay">❤️ 850</div></div>
+                <div class="insta-img-item"><img src="interior.jfif" alt="Interior"><div class="insta-overlay">❤️ 3.4k</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Book Your Table Today</h2>
+        <p>Special occasions, family dinners, or casual lunches — we have the perfect setting for you.</p>
+        <a href="#" class="cta-btn" id="ctaBookBtn">RESERVE NOW</a>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
